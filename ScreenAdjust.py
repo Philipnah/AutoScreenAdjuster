@@ -19,12 +19,12 @@ def SetBrightness(monitor):
      if timestamp <= 7 or timestamp == 23:
           with monitor:
                monitor.set_luminance(dim)
-               print("\nTime: " + time + "\nMonitor was dimmed")
+               print("\nTime: " + timestamp + "\nMonitor was dimmed")
 
      elif timestamp >= 8 and timestamp <= 22:
           with monitor:
                monitor.set_luminance(bright)
-               print("\nTime: " + time + "\nMonitor was brightened")
+               print("\nTime: " + timestamp + "\nMonitor was brightened")
 
 while True:
      SetBrightness(secondaryMonitor)
