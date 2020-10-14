@@ -3,6 +3,6 @@ This script can be run at startup of the PC and will automatically turn screen b
 Mac not supported.
 
 ## Requirements
-pip install monitorcontrol
+```pip install monitorcontrol```
 
 Basic python understanding
