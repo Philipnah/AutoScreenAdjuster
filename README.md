@@ -6,3 +6,6 @@ Mac not supported.
 ```pip install monitorcontrol```
 
 Basic python understanding
+
+### Docs
+https://monitorcontrol.readthedocs.io/en/latest/api.html
