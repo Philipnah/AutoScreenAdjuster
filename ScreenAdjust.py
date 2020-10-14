@@ -1,4 +1,3 @@
-import monitorcontrol
 from monitorcontrol import get_monitors
 import time
 
@@ -25,6 +24,7 @@ def SetBrightness(monitor):
      elif timestamp >= 8 and timestamp <= 22:
           with monitor:
                monitor.set_luminance(bright)
+               print("\nTime: " + time + "\nMonitor was brightened")
 
 while True:
      SetBrightness(secondaryMonitor)
