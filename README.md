@@ -7,5 +7,8 @@ Mac not supported.
 
 Basic python understanding
 
+## Optional
+If you want to run the script every so often automatically, you can use the Windows Task Scheduler.
+
 ### Docs
 https://monitorcontrol.readthedocs.io/en/latest/api.html

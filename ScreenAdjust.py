@@ -6,11 +6,10 @@ primaryMonitor = get_monitors()[0]
 secondaryMonitor = get_monitors()[1]
 
 # percentage
-bright = 60
+maxbright = 60
+bright = 50
 dim = 25
 
-# 15 mins
-wait = 900
 
 def SetBrightness(monitor):
      # get time
@@ -21,11 +20,15 @@ def SetBrightness(monitor):
                monitor.set_luminance(dim)
                print("\nTime: " + str(timestamp) + "\nMonitor was dimmed")
 
-     elif timestamp >= 8 and timestamp <= 22:
+     elif timestamp == 22:
           with monitor:
                monitor.set_luminance(bright)
                print("\nTime: " + str(timestamp) + "\nMonitor was brightened")
 
-while True:
-     SetBrightness(secondaryMonitor)
-     time.sleep(wait)
+     elif timestamp >= 8 and timestamp <= 21:
+          with monitor:
+               monitor.set_luminance(maxbright)
+               print("\nTime: " + str(timestamp) + "\nMonitor was brightened")
+
+
+SetBrightness(secondaryMonitor)
