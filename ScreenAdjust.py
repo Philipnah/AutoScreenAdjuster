@@ -2,9 +2,6 @@ import monitorcontrol
 from monitorcontrol import get_monitors
 import time
 
-# get time
-timestamp = int(time.strftime("%H"))
-
 # from 0 and up
 primaryMonitor = get_monitors()[0]
 secondaryMonitor = get_monitors()[1]
@@ -17,6 +14,9 @@ dim = 25
 wait = 900
 
 def SetBrightness(monitor):
+     # get time
+     timestamp = int(time.strftime("%H"))
+
      if timestamp <= 7 or timestamp == 23:
           with monitor:
                monitor.set_luminance(dim)
