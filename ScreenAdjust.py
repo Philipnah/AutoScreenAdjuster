@@ -7,52 +7,63 @@ primaryMonitor = get_monitors()[0]
 secondaryMonitor = get_monitors()[1]
 
 # percentage
-maxbright = 50
-bright = 40
-midbright = 35
-low = 30
-dim = 25
+maxbright = 46
+bright = 38
+midbright = 33
+mid = 30
+low = 25
+dim = 20
 
+# ---------------------------- not used -------------------------------
 # all settings required in the functions array argument
-monitor1Settings = [primaryMonitor, 7, 0, 21, 8, 20, dim, bright, maxbright]
-monitor2Settings = [secondaryMonitor, 7, 23, 21, 8, 20, midbright, bright, maxbright]
+# monitor1Settings = [primaryMonitor, 7, 0, 21, 8, 20, dim, bright, maxbright]
+# monitor2Settings = [secondaryMonitor, 7, 23, 21, 8, 20, midbright, bright, maxbright]
+# ---------------------------- not used -------------------------------
+
+
+# function for printing time and luminance
+def timeStamper(time, luminance):
+     print("\nTime: " + str(time) + "\nMonitor was set to: " + str(luminance))
 
 def SetBrightness(monitorSettings):
+
      # get time
      timestamp = int(time.strftime("%H"))
      print(timestamp)
 
-     print(monitor1Settings[1],monitor1Settings[2],monitor1Settings[3],monitor1Settings[4],monitor1Settings[5])
 
-     # lower than minval1 or minval2
-     if timestamp <= monitorSettings[1] or timestamp == monitorSettings[2]:
+     # from 00:00 to 7:00
+     if timestamp <= 7 or timestamp == 0:
           with monitorSettings[0]:
-               monitorSettings[0].set_luminance(monitorSettings[6])
-               print("\nTime: " + str(timestamp) + "\nMonitor was dimmed")
+               monitorSettings[0].set_luminance(dim)
+               timeStamper(str(timestamp), dim)
 
-     elif timestamp == monitorSettings[3]:
+     # 21:00
+     elif timestamp == 21:
           with monitorSettings[0]:
-               monitorSettings[0].set_luminance(monitorSettings[7])
-               print("\nTime: " + str(timestamp) + "\nMonitor was midbrightened")
+               monitorSettings[0].set_luminance(dim)
+               timeStamper(str(timestamp), dim)
 
-     elif timestamp >= monitorSettings[4] and timestamp <= monitorSettings[5]:
+     # from 8:00 to 19:00
+     elif timestamp >= 8 and timestamp <= 19:
           with monitorSettings[0]:
-               monitorSettings[0].set_luminance(monitorSettings[8])
-               print("\nTime: " + str(timestamp) + "\nMonitor was max brightened")
-     elif timestamp >= 21 and timestamp <= 23:
+               monitorSettings[0].set_luminance(maxbright)
+               timeStamper(str(timestamp), maxbright)
+
+     # from 20:00 to 23:00 
+     elif timestamp >= 20 and timestamp <= 23:
           with monitorSettings[0]:
-               monitorSettings[0].set_luminance(30)
-               print("\nTime: " + str(timestamp) + "\nMonitor was dimmed")
-     else:
-          print("else")
+               monitorSettings[0].set_luminance(low)
+               timeStamper(str(timestamp), low)
+
 
 try:
-     SetBrightness(monitor1Settings)
+     SetBrightness(primaryMonitor)
 except:
      print("Failed to apply the first monitors settings.")
 
 try:
-     SetBrightness(monitor2Settings)
+     SetBrightness(secondaryMonitor)
 except:
      print("Failed to apply the second monitors settings.")
 
